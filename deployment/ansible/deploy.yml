@@ -1,0 +1,51 @@
+- hosts: all
+  become: no  # N'utilise pas sudo par défaut 
+
+  tasks:
+    - name: S'assurer que Docker Compose est installé
+      shell: docker-compose --version
+      ignore_errors: yes
+
+    - name: Créer le répertoire de déploiement
+      file:
+        path: /var/lib/jenkins/deploy
+        state: directory
+        mode: '0755'
+      become: no
+
+    - name: Copier le docker-compose.yaml
+      copy:
+        src: "{{ playbook_dir }}/../../docker-compose.yaml"
+        dest: /var/lib/jenkins/deploy/docker-compose.yaml
+        mode: '0755'
+      delegate_to: localhost
+      become: no
+
+    - name: Copier le reste du projet
+      copy:
+        src: "{{ playbook_dir }}/../.."
+        dest: /var/lib/jenkins/deploy/
+        mode: '0755'
+      delegate_to: localhost
+      become: no
+
+    - name: Vérifier la structure des dossiers
+      shell: |
+        cd /var/lib/jenkins/deploy/
+        ls -la
+        if [ ! -d "Excellia_bourse" ] && [ -d "Excellia-bourse-pipeline" ]; then
+          ln -sf Excellia-bourse-pipeline/Excellia_bourse Excellia_bourse
+        elif [ ! -d "Excellia_bourse" ] && [ -d "Excellia-bourse-pipeline" ]; then
+          find . -type d -name "Excellia_bourse" -exec ln -sf {} Excellia_bourse \;
+        fi
+        ls -la
+      args:
+        executable: /bin/bash
+      become: no
+
+    - name: Lancer les conteneurs
+      shell: |
+        cd /var/lib/jenkins/deploy/
+        ls -la
+        docker-compose up -d
+      become: no
