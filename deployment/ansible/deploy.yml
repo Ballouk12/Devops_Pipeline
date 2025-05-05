@@ -29,23 +29,10 @@
       delegate_to: localhost
       become: no
 
-    - name: Vérifier la structure des dossiers
-      shell: |
-        cd /var/lib/jenkins/deploy/
-        ls -la
-        if [ ! -d "Excellia_bourse" ] && [ -d "Excellia-bourse-pipeline" ]; then
-          ln -sf Excellia-bourse-pipeline/Excellia_bourse Excellia_bourse
-        elif [ ! -d "Excellia_bourse" ] && [ -d "Excellia-bourse-pipeline" ]; then
-          find . -type d -name "Excellia_bourse" -exec ln -sf {} Excellia_bourse \;
-        fi
-        ls -la
-      args:
-        executable: /bin/bash
-      become: no
 
     - name: Lancer les conteneurs
       shell: |
-        cd /var/lib/jenkins/deploy/
+        cd /var/lib/jenkins/deploy/Excellia-bourse-pipeline
         ls -la
         docker-compose up -d
       become: no
