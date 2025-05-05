@@ -1,5 +1,5 @@
 - hosts: all
-  become: no  # N'utilise pas sudo par défaut klll
+  become: no  # N'utilise pas sudo par défaut kllll
 
   tasks:
     - name: S'assurer que Docker Compose est installé
