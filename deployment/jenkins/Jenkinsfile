@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        ANSIBLE_HOST = 'ec2-user@ec2-13-50-101-159' 
+        ANSIBLE_HOST = 'ec2-user@ec2-13-50-101-159'
     }
 
     stages {
@@ -12,10 +12,25 @@ pipeline {
             }
         }
 
+        stage('Build Microservices') {
+            steps {
+                sh '''
+                    echo "Build des services un par un"
+                    cd Excellia_bourse
+
+                    for service in discovery-service config-service gateway-service gestion-bourse-candidature-service inscription-service messagerie-service notification-service utilitiesService; do
+                        echo "Build du service: $service"
+                        cd $service
+                        ./mvnw clean package -DskipTests
+                        cd ..
+                    done
+                '''
+            }
+        }
+
         stage('Déploiement sur EC2 avec Ansible') {
             steps {
                 sh '''
-                    # Run ansible-playbook with proper syntax
                     ANSIBLE_BECOME_USER=root ansible-playbook -i localhost, /var/lib/jenkins/workspace/Excellia-bourse-pipeline/deployment/ansible/deploy.yml -c local -b --become-method=sudo -e "ansible_become_password="
                 '''
             }
