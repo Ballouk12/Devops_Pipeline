@@ -229,26 +229,6 @@ services:
     networks:
       - microservices-network
 
-  # UI Tests
-  ui-tests:
-    build:
-      context: ./Excellia_bourse/ui-tests
-      dockerfile: Dockerfile
-    container_name: ui-tests
-    environment:
-      - GATEWAY_URL=http://gateway-service:8888
-    depends_on:
-      - gateway-service
-      - discovery-service
-      - kafka
-      - notification-service
-      - config-service
-      - inscription-service
-      - messagerie-service
-      - gestion-bourse-candidature-service
-      - frontend
-    networks:
-      - microservices-network
 
   # Frontend Next.js
   frontend:
