@@ -27,7 +27,6 @@
         dest: /var/lib/jenkins/deploy/Excellia-bourse-pipeline
         rsync_opts:
           - "--exclude=.git"
-        mode: 0755
       delegate_to: localhost
 
 
