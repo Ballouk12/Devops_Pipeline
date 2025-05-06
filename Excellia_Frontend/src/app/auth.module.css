@@ -5,7 +5,7 @@
     text-align: center; 
     margin-bottom: 5px; 
     margin-right: 200px;
-    background-color : #b91c1c
+    background-color : #068b2e
   }
   
   .title1 {
@@ -149,7 +149,7 @@
     border-radius: 5px;
     font-size: 14px;
     margin-bottom: 20px;
-    border: 1px solid #fecaca;
+    border: 1px solid #068b2e;
   }
   
   /* Media query for tablets and desktop */
