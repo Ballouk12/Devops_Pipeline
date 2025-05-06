@@ -23,7 +23,7 @@
 
     - name: Copier le reste du projet sans le dossier .git
       synchronize:
-        src: "{{ source_dir }}/"
+        src: "{{ playbook_dir }}/../.."
         dest: /var/lib/jenkins/deploy/Excellia-bourse-pipeline
         rsync_opts:
           - "--exclude=.git"
