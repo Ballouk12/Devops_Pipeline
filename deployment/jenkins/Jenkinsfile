@@ -17,12 +17,12 @@ pipeline {
                 sh '''
                     echo "Build des services un par un"
                     cd Excellia_bourse
-                    find . -name mvnw -exec chmod +x {} \;
+                    sudo chown -R jenkins:jenkins /var/lib/jenkins/workspace/Excellia-bourse-pipeline
 
                     for service in discovery-service config-service gateway-service gestion-bourse-candidature-service inscription-service messagerie-service notification-service utilitiesService; do
                         echo "Build du service: $service"
                         cd $service
-                        ./mvnw clean package -DskipTests
+                        mvn clean package -DskipTests
                         cd ..
                     done
                 '''
