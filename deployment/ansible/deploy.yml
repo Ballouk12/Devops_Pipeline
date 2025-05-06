@@ -31,7 +31,7 @@
 
     - name: Lancer les conteneurs
       shell: |
-        cd /var/lib/jenkins/deploy
+        cd /var/lib/jenkins/deploy/Excellia-bourse-pipeline
         ls -la
         docker-compose up --build -d
       become: no
