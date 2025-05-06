@@ -22,13 +22,12 @@
       become: no
 
     - name: Copier le reste du projet
-      copy:
+      synchronize:
         src: "{{ playbook_dir }}/../.."
         dest: /var/lib/jenkins/deploy/
-        mode: '0755'
+        rsync_opts:
+          - "--exclude=.git"
       delegate_to: localhost
-      become: no
-
 
     - name: Lancer les conteneurs
       shell: |
