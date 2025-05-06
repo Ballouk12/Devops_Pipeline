@@ -99,14 +99,14 @@
   
   .formGroup input:focus {
     outline: none;
-    border-color: #b91c1c;
+    border-color: #2de348;
   }
   
   .authButton {
     margin-top: 10px;
     padding: 14px;
     border: none;
-    background-color: #b91c1c;
+    background-color: #188f14;
     color: white;
     font-size: 16px;
     font-weight: 500;
@@ -116,11 +116,11 @@
   }
   
   .authButton:hover {
-    background-color: #b91c1c;
+    background-color: #0ce784;
   }
   
   .authButton:disabled {
-    background-color: #b91c1c;
+    background-color: #068b2e;
     cursor: not-allowed;
   }
   
@@ -132,19 +132,19 @@
   }
   
   .authLink {
-    color: #b91c1c;
+    color: #068b2e;
     font-weight: 500;
     transition: color 0.3s;
   }
   
   .authLink:hover {
-    color: #b91c1c;
+    color: #068b2e;
     text-decoration: underline;
   }
   
   .errorMessage {
     background-color: #fee2e2;
-    color: #b91c1c;
+    color: #067541;
     padding: 12px;
     border-radius: 5px;
     font-size: 14px;
@@ -188,7 +188,7 @@
   }
   
   :global(.dark) .formGroup input:focus {
-    border-color: #b91c1c;
+    border-color: #0b7e0d;
   }
   
   :global(.dark) .authFooter {
