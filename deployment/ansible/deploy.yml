@@ -21,17 +21,11 @@
       delegate_to: localhost
       become: no
 
-    - name: Synchroniser le projet sans .git
-      synchronize:
+    - name: Copier le reste du projet
+      copy:
         src: "{{ playbook_dir }}/../.."
-        dest: /var/lib/jenkins/deploy/Excellia-bourse-pipeline
-        mode: push
-        rsync_opts:
-          - "--exclude=.git"
-          - "--no-owner"
-          - "--no-group"
-          - "--chmod=ugo=rwX"
-          - "--omit-dir-times"
+        dest: /var/lib/jenkins/deploy/
+        mode: '0755'
       delegate_to: localhost
       become: no
 
