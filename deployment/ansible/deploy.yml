@@ -25,8 +25,12 @@
       synchronize:
         src: "{{ playbook_dir }}/../.."
         dest: /var/lib/jenkins/deploy/Excellia-bourse-pipeline
+        mode: push
         rsync_opts:
           - "--exclude=.git"
+          - "--no-group"
+          - "--no-owner"
+          - "--chmod=ugo=rwX"
       delegate_to: localhost
 
 
