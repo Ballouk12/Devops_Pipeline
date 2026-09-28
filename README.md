@@ -361,12 +361,4 @@ Ce projet est particulièrement intéressant à présenter sur GitHub parce qu�
 
 Excellia Bourse est bien plus qu’un simple projet académique : c’est une plateforme technique complète qui met en valeur la capacité à concevoir, organiser et déployer une solution logicielle moderne.
 
-Il représente un excellent projet de portfolio pour démontrer :
-
-* la maîtrise de Java/Spring Boot,
-* la connaissance des systèmes distribués,
-* le développement d’une interface web moderne,
-* la mise en place d’un pipeline CI/CD,
-* la capacité à gérer un projet de bout en bout.
-
 ---
