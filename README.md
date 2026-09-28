@@ -52,7 +52,7 @@ Le système repose sur un modèle d’écosystème distribué où chaque service
 
 ### Flux métier principal
 
-1. Un étudiant s’inscrit et crée son profil.
+1. Un étudiant s’inscrit et crée son profil..
 2. Il consulte les bourses disponibles.
 3. Il soumet une candidature avec les documents requis.
 4. Le système valide la demande et la stocke.
